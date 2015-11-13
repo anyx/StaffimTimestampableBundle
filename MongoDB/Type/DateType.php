@@ -11,7 +11,7 @@ class DateType extends BaseDateType
 {
     public function convertToDatabaseValue($value)
     {
-        if (!($value instanceof \Staffim\Crab\DateTime\DateTime)) {
+        if (!($value instanceof \Staffim\TimestampableBundle\DateTime\DateTime)) {
             return parent::convertToDatabaseValue($value);
         }
 
@@ -28,7 +28,7 @@ class DateType extends BaseDateType
             return parent::convertToPHPValue($value);
         }
 
-        $date = new \Staffim\Crab\DateTime\DateTime($value->sec);
+        $date = new \Staffim\TimestampableBundle\DateTime\DateTime($value->sec);
         $date->setMilliseconds($value->usec / 1000);
 
         return $date;
@@ -36,6 +36,6 @@ class DateType extends BaseDateType
 
     public function closureToPHP()
     {
-        return 'if ($value instanceof \MongoDate) { $date = new \Staffim\Crab\DateTime\DateTime($value->sec); $date->setMilliseconds($value->usec / 1000); $return = $date; } else { $return = new \Staffim\Crab\DateTime\DateTime($value); }';
+        return 'if ($value instanceof \MongoDate) { $date = new \Staffim\TimestampableBundle\DateTime\DateTime($value->sec); $date->setMilliseconds($value->usec / 1000); $return = $date; } else { $return = new \Staffim\TimestampableBundle\DateTime\DateTime($value); }';
     }
 }

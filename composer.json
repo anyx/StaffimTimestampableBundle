@@ -1,0 +1,22 @@
+{
+    "name": "staffim/timestampable-bundle",
+    "description": "Bundle for Symfony2 with improvements for DateTime",
+    "keywords": ["timestamp", "mongodb", "datetime", "timestampable", "symfony", "bundle"],
+    "license": "MIT",
+    "type": "bundle",
+    "authors": [{"name": "Vyacheslav Salakhutdinov", "email": "megazoll@gmail.com"}],
+    "require": {
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Staffim\\TimestampableBundle\\": ""
+        },
+        "files": ["src/functions.php"]
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}

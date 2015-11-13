@@ -14,7 +14,7 @@
         "psr-4": {
             "Staffim\\TimestampableBundle\\": ""
         },
-        "files": ["src/functions.php"]
+        "files": ["functions.php"]
     },
     "config": {
         "bin-dir": "bin"

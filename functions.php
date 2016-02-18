@@ -8,6 +8,12 @@ if (!function_exists('now')) {
 
 if (!function_exists('today')) {
     function today() {
-        return now()->setTime(0, 0, 0);
+        return \Staffim\TimestampableBundle\DateTime\Calendar::today();
+    }
+}
+
+if (!function_exists('monday')) {
+    function monday(\DateTimeInterface $date = null) {
+        return \Staffim\TimestampableBundle\DateTime\Calendar::monday($date);
     }
 }

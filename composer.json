@@ -6,15 +6,14 @@
     "type": "bundle",
     "authors": [{"name": "Vyacheslav Salakhutdinov", "email": "megazoll@gmail.com"}],
     "require": {
+        "staffim/datetime": "^1.0"
     },
     "require-dev": {
-        "phpspec/phpspec": "~2.2"
     },
     "autoload": {
         "psr-4": {
             "Staffim\\TimestampableBundle\\": ""
-        },
-        "files": ["functions.php"]
+        }
     },
     "config": {
         "bin-dir": "bin"

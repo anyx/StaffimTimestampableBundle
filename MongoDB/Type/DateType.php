@@ -11,15 +11,12 @@ class DateType extends BaseDateType
 {
     public function convertToDatabaseValue($value)
     {
-        if (!($value instanceof \Staffim\TimestampableBundle\DateTime\DateTime)) {
+        if (!($value instanceof \Staffim\DateTime\DateTime)) {
             return parent::convertToDatabaseValue($value);
         }
 
-        $timestamp = $value->format('U');
-        $milliseconds = (int) $value->getMilliseconds();
-
         // The 2nd argument to MongoDate is in µ-seconds
-        return new \MongoDate($timestamp, $milliseconds * 1000);
+        return new \MongoDate($value->format('U'), $value->format('u'));
     }
 
     public function convertToPHPValue($value)
@@ -28,14 +25,13 @@ class DateType extends BaseDateType
             return parent::convertToPHPValue($value);
         }
 
-        $date = new \Staffim\TimestampableBundle\DateTime\DateTime($value->sec);
-        $date->setMilliseconds($value->usec / 1000);
+        $date = \Staffim\DateTime\DateTime::createFromFormat('U.u', $value->sec . '.' . $value->usec);
 
         return $date;
     }
 
     public function closureToPHP()
     {
-        return 'if ($value instanceof \MongoDate) { $date = new \Staffim\TimestampableBundle\DateTime\DateTime($value->sec); $date->setMilliseconds($value->usec / 1000); $return = $date; } else { $return = new \Staffim\TimestampableBundle\DateTime\DateTime($value); }';
+        return 'if ($value instanceof \MongoDate) { $return = \Staffim\DateTime\DateTime::createFromFormat(\'U.u\', $value->sec . \'.\' . $value->usec); } else { $return = new \Staffim\DateTime\DateTime($value); }';
     }
 }

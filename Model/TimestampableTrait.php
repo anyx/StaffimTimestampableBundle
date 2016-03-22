@@ -9,19 +9,19 @@ trait TimestampableTrait
     /**
      * @MongoDB\Date
      *
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     private $createdAt;
 
     /**
      * @MongoDB\Date
      *
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     private $updatedAt;
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
     public function getCreatedAt()
     {
@@ -29,7 +29,7 @@ trait TimestampableTrait
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
     public function getUpdatedAt()
     {
@@ -37,17 +37,17 @@ trait TimestampableTrait
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param \DateTimeInterface $createdAt
      */
-    public function setCreatedAt(\DateTime $createdAt)
+    public function setCreatedAt(\DateTimeInterface $createdAt)
     {
         $this->createdAt = $createdAt;
     }
 
     /**
-     * @param \DateTime $updatedAt
+     * @param \DateTimeInterface $updatedAt
      */
-    public function setUpdatedAt(\DateTime $updatedAt)
+    public function setUpdatedAt(\DateTimeInterface $updatedAt)
     {
         $this->updatedAt = $updatedAt;
     }
